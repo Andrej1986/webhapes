@@ -1,0 +1,18 @@
+@import "variables";
+@import "mixin";
+
+
+
+@import "general";
+@import "top_nav";
+@import "carousel";
+@import "footer";
+
+@import "pages/index";
+@import "pages/schedule";
+@import "pages/login";
+
+// Responsivnes
+@import "responsivness/index";
+@import "my_design/buttons";
+
