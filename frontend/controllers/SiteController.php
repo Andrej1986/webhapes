@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\Category;
 use frontend\models\Product;
 use Yii;
 use yii\base\InvalidParamException;
@@ -73,8 +74,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index', [
-        	'products' => Product::find()->asArray()->limit(4)->all(),
+        return $this->render('//site/index', [
+        	'products' => Product::find()->select('name, price, category, introduction')->asArray()->limit(4)->all(),
+		]);
+    }
+
+	public function actionShop()
+	{
+		return $this->render('//site/shop', [
+			'products' => Product::find()->select('name, price, category, introduction')->asArray()->all(),
+			'categories' => Category::find()->select('name')->asArray()->all(),
 		]);
     }
 

@@ -4,11 +4,11 @@
 
 use yii\bootstrap\Carousel;
 
-$this->title = 'My Yii Application';
+$this->title = 'Tvorba web stránok - WebHAPES';
 ?>
 <div class="site-index">
 
-    <div class="row" style="margin-top: 50px;">
+    <div class="row the-carousel">
 		<?php echo Carousel::widget([
 			'items' => [
 

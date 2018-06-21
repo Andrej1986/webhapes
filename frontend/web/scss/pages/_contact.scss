@@ -1,0 +1,22 @@
+.site-contact {
+  h1, label {
+    color: $primary-color2;
+  }
+  .form-group.field-contactform-verifycode label{
+    margin: 20px 0 5px 0;
+  }
+  #contactform-verifycode{
+    width: 180px;
+    border: 1px rgba(0,0,0,0.2) solid;
+    border-radius: 4px;
+    margin: 0 0 0 10px;
+  }
+
+  .img{
+    margin-left: 5px;
+  }
+
+  .verification-code-info{
+    margin: -15px 0 40px 0;
+  }
+}

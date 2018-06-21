@@ -1,0 +1,42 @@
+.site-shop {
+  h1 {
+   color: $primary-color2;
+  }
+  h3 {
+    color: $primary-color2;
+    text-transform: capitalize;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .product {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: black;
+    color: $primary-color1;
+    min-height: 200px;
+    position: relative;
+    border-radius: 4px;
+
+    h4 {
+      padding-top: 10px;
+    }
+
+    pre {
+      color: $primary-color2;
+      padding-bottom: 40px;
+    }
+
+    p {
+      position: absolute;
+      bottom: 3px;
+      left: 10px;
+    }
+
+  }
+
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px;
+    margin-bottom: 20px;
+  }
+}

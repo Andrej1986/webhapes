@@ -1,5 +1,11 @@
+#yii-debug-toolbar {
+  display: none !important;
+}
+
+
 body{
   min-height: 105vh;
+  margin-top: 50px;
   //color: $font-color;
   //  background-color: darken(#fff, 0);
   font-family:  sans-serif;
@@ -29,6 +35,4 @@ pre {
   white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
   white-space: -o-pre-wrap; /* Opera 7 */
   word-wrap: break-word; /* Internet Explorer 5.5+ */
-
-
 }
