@@ -41,6 +41,7 @@ AppAsset::register($this);
 		['label' => 'Obchod', 'url' => ['/site/shop']],
 		['label' => 'Onás', 'url' => ['/site/about']],
 		['label' => 'Kontakt', 'url' => ['/site/contact']],
+		['label' => 'Košík', 'url' => ['/cart/index']],
 	];
 	if (Yii::$app->user->isGuest) {
 		$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

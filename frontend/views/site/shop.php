@@ -2,7 +2,9 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
 use yii\helpers\Html;
+use yii\web\View;
 
 $this->title = 'Tvorba web stránok - Obchod';
 ?>
@@ -18,6 +20,7 @@ $this->title = 'Tvorba web stránok - Obchod';
                     <h4><?= $product['name'] ?></h4>
                     <pre><?= $product['introduction'] ?></pre>
                     <p>Cena: <?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
+                    <a href="<?= Url::to(['//cart/index', 'id' => $product['id']]) ?>" class="btn btn-confirm">Objednať</a>
                 </div>			<?php endif; ?>
 		<?php endforeach; ?>
     <div class="clearfix"></div>

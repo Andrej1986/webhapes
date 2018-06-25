@@ -33,10 +33,15 @@
     }
 
   }
-
   .carousel-caption {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 5px;
     margin-bottom: 20px;
+  }
+
+  .btn{
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
