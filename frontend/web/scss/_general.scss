@@ -20,6 +20,9 @@ body{
       text-decoration: none;
       color: $primary-color2;
     }
+    &:focus{
+      text-decoration: none;
+    }
   }
 }
 

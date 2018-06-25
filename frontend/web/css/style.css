@@ -12,6 +12,8 @@ body {
     body a:hover {
       text-decoration: none;
       color: #00a6e5; }
+    body a:focus {
+      text-decoration: none; }
 
 pre {
   margin: 0 auto;
@@ -91,6 +93,10 @@ nav.navbar {
   background-color: rgba(0, 0, 0, 0.4);
   padding: 5px;
   margin-bottom: 20px; }
+.site-shop .btn {
+  position: absolute;
+  right: 0;
+  bottom: 0; }
 
 .site-about h1 {
   color: #00a6e5; }
@@ -112,6 +118,35 @@ nav.navbar {
   margin-left: 5px; }
 .site-contact .verification-code-info {
   margin: -15px 0 40px 0; }
+
+.site-cart h1 {
+  color: #00a6e5; }
+.site-cart h3 {
+  color: #00a6e5;
+  text-transform: capitalize;
+  margin-top: 50px;
+  text-align: center; }
+.site-cart .cart-item {
+  background-color: rgba(0, 166, 229, 0.1);
+  padding: 20px 0;
+  min-height: 150px; }
+  .site-cart .cart-item .item-second-row {
+    display: block;
+    padding-top: 30px;
+    margin: 0 10px; }
+  .site-cart .cart-item .total {
+    background-color: #fbab18;
+    margin: 10px;
+    padding: 10px;
+    text-align: center; }
+  .site-cart .cart-item a {
+    font-size: 2em;
+    padding: 10px 30px;
+    color: white;
+    border-radius: 8px;
+    display: inline-block;
+    background-color: #00a6e5;
+    font-weight: bolder; }
 
 @media only screen and (min-width: 320px) {
   .carousel-caption {
@@ -160,6 +195,10 @@ nav.navbar {
     min-height: 250px; }
     .site-index .product pre {
       padding-bottom: 0 !important; } }
+@media only screen and (min-width: 240px) {
+  .site-shop .btn {
+    right: 10px;
+    bottom: 10px; } }
 @media only screen and (min-width: 320px) {
   .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6); } }
@@ -214,11 +253,11 @@ nav.navbar {
     padding: 30px 50px 0 0; } }
 .btn-confirm {
   color: #4cceff;
-  background-color: #fbab18;
+  background-color: black;
   border-color: #fbab18; }
   .btn-confirm:hover {
     color: #fbab18;
-    background-color: #4cceff;
+    background-color: #242424;
     border-color: #4cceff; }
 
 /*# sourceMappingURL=style.css.map */

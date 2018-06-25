@@ -82,7 +82,7 @@ class SiteController extends Controller
 	public function actionShop()
 	{
 		return $this->render('//site/shop', [
-			'products' => Product::find()->select('name, price, category, introduction')->asArray()->all(),
+			'products' => Product::find()->select('id, name, price, category, introduction')->asArray()->all(),
 			'categories' => Category::find()->select('name')->asArray()->all(),
 		]);
     }
