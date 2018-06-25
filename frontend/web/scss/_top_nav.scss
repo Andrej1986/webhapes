@@ -1,0 +1,17 @@
+nav.navbar {
+
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  //border-radius: $border-radius1;
+  a {
+    color: $primary-color2 !important;
+    &:hover {
+      color: $primary-color1 !important;
+    }
+  }
+}
+
+.navbar-inverse {
+  border: none;
+}

@@ -1,0 +1,37 @@
+.site-cart {
+  h1 {
+   color: $primary-color2;
+  }
+  h3 {
+    color: $primary-color2;
+    text-transform: capitalize;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .cart-item{
+    background-color: transparentize($primary-color2, 0.9) ;
+    padding: 20px 0;
+    min-height: 150px;
+    .item-second-row{
+      display: block;
+      padding-top: 30px;
+      margin: 0 10px;
+    }
+    .total{
+      background-color: $primary-color1;
+      margin: 10px;
+      padding: 10px;
+      text-align: center;
+    }
+    a{
+      font-size:2em;
+      padding: 10px 30px;
+      color: white;
+      border-radius: 8px;
+      display: inline-block;
+      background-color: $primary-color2;
+      font-weight: bolder;
+    }
+  }
+
+}
