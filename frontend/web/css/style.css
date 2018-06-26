@@ -276,7 +276,7 @@ nav.navbar {
   .site-about .design, .site-about .development, .site-about .visual {
     padding: 30px 50px 0 0; } }
 @media only screen and (min-width: 767px) {
-  .btn {
+  .site-order-contact .btn {
     margin: 20px 0 50px 100px; } }
 .btn-confirm {
   color: #4cceff;
