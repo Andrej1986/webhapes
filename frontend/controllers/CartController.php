@@ -96,6 +96,10 @@ class CartController extends Controller
 			Yii::$app->session->set('item_' . $id, $new_value);
 		}
 
+		if ($item_session === 0){
+			Yii::$app->session->remove('item_'.$id);
+		}
+
 		return $this->redirect(['//cart/index']);
 	}
 
@@ -123,12 +127,18 @@ class CartController extends Controller
 	public function actionAjaxDecreaseItem()
 	{
 		$id = Yii::$app->request->post('id');
+		$item_session = Yii::$app->session->get('item_' . $id);
 
-		if (Yii::$app->request->isAjax && Yii::$app->session->get('item_' . $id) > 0) {
+		if (Yii::$app->request->isAjax && $item_session > 0) {
 			$amount = (int)Yii::$app->request->post('itemAmount') - 1;
 			Yii::$app->session->set('item_' . $id, $amount);
 			return $amount;
 		}
+
+		if ($item_session == 0){
+			return Yii::$app->session->remove('item_'.$id);
+		}
+
 		return 0;
 	}
 

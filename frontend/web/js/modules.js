@@ -65,3 +65,27 @@ let Cart = (function () {
     }
 
 }());
+
+let Order = (function () {
+
+    function hideUnhideElement(condition, elem) {
+        if (!condition) {
+            elem.addClass('hide-element');
+            elem.removeClass('display-element');
+        } else {
+            elem.addClass('display-element');
+            elem.removeClass('hide-element');
+        }
+    }
+
+    function isCompany() {
+        let isCompanyValue = $('.site-order-contact #is-company').is(':checked'),
+            companyInfo = $('.site-order-contact .company');
+
+        return hideUnhideElement(isCompanyValue, companyInfo);
+    }
+
+    return {
+        isCompany: isCompany,
+    }
+}());

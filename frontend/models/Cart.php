@@ -15,18 +15,29 @@ class Cart extends Model
 {
 	public function createItemSessionNameById($id)
 	{
-		return 'item_'.$id;
+		return 'item_' . $id;
 	}
 
-	public function getAllItems($sessions = [])
+	public static function getAllItems($sessions = [])
 	{
 		$items = [];
 		foreach ($sessions as $key => $value) {
-			if ($value && strpos($key, 'item_') === 0) {
+			if ($value && strpos($key, 'item_') === 0 && strlen($key) > 5) {
 				$items[substr($key, 5)] = $value;
 			}
 		}
 		return $items;
+	}
+
+	public static function destroyItemsSession($sessions)
+	{
+		if (isset($sessions)) {
+			foreach ($sessions as $key => $value) {
+				if ($value && strpos($key, 'item_') === 0 && strlen($key) > 5) {
+					Yii::$app->session->remove($key);
+				}
+			}
+		}
 	}
 
 	public function fixedPayment($sessions = [])
