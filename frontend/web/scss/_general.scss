@@ -1,0 +1,48 @@
+#yii-debug-toolbar {
+  display: none !important;
+}
+
+
+body{
+  min-height: 105vh;
+  margin-top: 50px;
+  //color: $font-color;
+  //  background-color: darken(#fff, 0);
+  font-family:  sans-serif;
+  //font-family: 'Itim', cursive, sans-serif;
+  font-size: 14px;
+    //background-repeat: repeat;
+
+  a{
+    text-decoration: none;
+    color: $primary-color1;
+    &:hover{
+      text-decoration: none;
+      color: $primary-color2;
+    }
+    &:focus{
+      text-decoration: none;
+    }
+  }
+}
+
+pre {
+  margin: 0 auto;
+  width: 80%;
+  background-color: transparent;
+  border: none;
+  font-family: "Times New Roman", sans-serif;
+  line-height: 1.5em;
+  word-break: keep-all;
+  white-space: pre-wrap; /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.hide-element{
+  display: none;
+}
+.show-element{
+  display: block;
+}
