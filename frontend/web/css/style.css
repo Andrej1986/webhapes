@@ -32,6 +32,12 @@ pre {
   word-wrap: break-word;
   /* Internet Explorer 5.5+ */ }
 
+.hide-element {
+  display: none; }
+
+.show-element {
+  display: block; }
+
 nav.navbar {
   margin: 0 !important;
   padding: 0 !important;
@@ -148,6 +154,24 @@ nav.navbar {
     background-color: #00a6e5;
     font-weight: bolder; }
 
+.site-order-contact h1 {
+  color: #00a6e5; }
+.site-order-contact #is-company:hover {
+  color: #00a6e5; }
+.site-order-contact .btn {
+  margin-bottom: 50px; }
+
+.site-order-check h1 {
+  color: #00a6e5; }
+.site-order-check h3 {
+  color: #fbab18; }
+.site-order-check table {
+  margin-bottom: 50px; }
+.site-order-check h4 {
+  margin-bottom: 30px; }
+.site-order-check p.remarks {
+  font-weight: bold; }
+
 @media only screen and (min-width: 320px) {
   .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6); } }
@@ -251,6 +275,9 @@ nav.navbar {
     padding-top: 40px; }
   .site-about .design, .site-about .development, .site-about .visual {
     padding: 30px 50px 0 0; } }
+@media only screen and (min-width: 767px) {
+  .btn {
+    margin: 20px 0 50px 100px; } }
 .btn-confirm {
   color: #4cceff;
   background-color: black;
