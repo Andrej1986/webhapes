@@ -19,11 +19,14 @@ $this->title = 'Tvorba web stránok - Obchod';
                 <div class="col-md-offset-2 col-md-3  product">
                     <h4><?= $product['name'] ?></h4>
                     <pre><?= $product['introduction'] ?></pre>
-                    <p>Cena: <?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
-                    <a href="<?= Url::to(['//cart/index', 'id' => $product['id']]) ?>" class="btn btn-confirm">Objednať</a>
-                </div>			<?php endif; ?>
+                    <p>Cena:
+						<?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
+                    <a href="<?= Url::to(['//cart/index', 'id' => $product['id']]) ?>"
+                       class="btn btn-confirm">Objednať</a>
+                </div>
+			<?php endif; ?>
 		<?php endforeach; ?>
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 	<? endforeach; ?>
 
 </div>
