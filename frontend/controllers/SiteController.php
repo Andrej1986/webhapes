@@ -75,7 +75,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('//site/index', [
-        	'products' => Product::find()->select('name, price, category, introduction')->asArray()->limit(4)->all(),
+        	'products' => Product::find()->select('id, name, price, category, introduction')->asArray()->limit(4)->all(),
 		]);
     }
 
