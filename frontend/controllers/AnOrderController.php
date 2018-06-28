@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use frontend\models\AnOrder;
 use frontend\models\Cart;
+use Yii;
 
 class AnOrderController extends \yii\web\Controller
 {
@@ -38,8 +39,15 @@ class AnOrderController extends \yii\web\Controller
 		$model = AnOrder::findOne($order_id);
 
 		if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-			Cart::destroyItemsSession($_SESSION);
 
+			if ($model->sendOrderConfirmationEmail($model->email)) {
+				Cart::destroyItemsSession($_SESSION);
+				Yii::$app->session->setFlash('success', 'Na váš email sme vám odoslali potvrdenie objednávky.');
+				return $this->render('//an-order/order_confirmation');
+			}
+
+			Cart::destroyItemsSession($_SESSION);
+			Yii::$app->session->setFlash('success', 'Nepodarilo sa odoslať potvrdenie objednávky na váš email.');
 			return $this->render('//an-order/order_confirmation');
 		}
 
