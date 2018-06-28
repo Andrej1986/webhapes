@@ -176,6 +176,11 @@ nav.navbar {
 .site-order-check p.remarks {
   font-weight: bold; }
 
+.product-details h2 {
+  color: #00a6e5; }
+.product-details h4 {
+  color: #00a6e5; }
+
 @media only screen and (min-width: 320px) {
   .site-index .product .btn-confirm {
     bottom: 10px;
