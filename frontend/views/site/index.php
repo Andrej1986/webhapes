@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\bootstrap\Carousel;
+use yii\helpers\Url;
 
 $this->title = 'Tvorba web stránok - WebHAPES';
 ?>
@@ -47,9 +48,11 @@ $this->title = 'Tvorba web stránok - WebHAPES';
     <div class="row container-fluid">
 		<?php foreach ($products as $product): ?>
             <div class="col-md-offset-2 col-md-3  product">
-                <h4><?= $product['name'] ?></h4>
+                <a href="<?= Url::to(['//product/index', 'id' => $product['id']]) ?>"><h4><?= $product['name'] ?></h4></a>
                 <pre><?= $product['introduction'] ?></pre>
                 <p>Cena: <?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
+                <a href="<?= Url::to(['//cart/index', 'id' => $product['id']]) ?>"
+                   class="btn btn-confirm">Objednať</a>
             </div>
 		<?php endforeach; ?>
     </div>
