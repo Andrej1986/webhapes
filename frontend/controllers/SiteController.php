@@ -75,7 +75,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('//site/index', [
-        	'products' => Product::find()->select('name, price, category, introduction')->asArray()->limit(4)->all(),
+        	'products' => Product::find()->select('id, name, price, category, introduction')->asArray()->limit(4)->all(),
 		]);
     }
 
@@ -131,7 +131,7 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+            if ($model->sendCustomerRequestEmail(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Ďakujeme, že ste nás kontaktovali. Ozveme sa vám tak rýchlo, ako to pôjde.');
             } else {
                 Yii::$app->session->setFlash('error', 'Žiaľ, správu sa nepodarilo odoslať.');

@@ -17,7 +17,7 @@ $this->title = 'Tvorba web stránok - Obchod';
 		<?php foreach ($products as $product): ?>
 			<?php if ($category['name'] === $product['category']): ?>
                 <div class="col-md-offset-2 col-md-3  product">
-                    <h4><?= $product['name'] ?></h4>
+                    <a href="<?= Url::to(['//product/index', 'id' => $product['id']]) ?>"><h4><?= $product['name'] ?></h4></a>
                     <pre><?= $product['introduction'] ?></pre>
                     <p>Cena:
 						<?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
