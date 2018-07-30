@@ -119,7 +119,7 @@ class AnOrder extends \yii\db\ActiveRecord
 
 	private function confirmationEmailHtml($items)
 	{
-		$string = '<h3>Vážený/á ' . $this->name  . '.</h3>';
+		$string = '<h3>Vážený/á ' . $this->name . '.</h3>';
 		$string .= '<p>Obdržali sme Vašu objednávku a budeme na nej usilovne pracovať.</p>';
 		$string .= '<p>V prípade otázok nás, prosím, kontaktujte.</p><hr>';
 
@@ -154,5 +154,59 @@ class AnOrder extends \yii\db\ActiveRecord
 			->setHtmlBody($this->confirmationEmailBody()
 			)
 			->send();
+	}
+
+	private function calculateQty($items)
+	{
+		$items = self::orderedItems($items);
+
+		foreach ($items as $item) {
+			$product           = Product::findOne($item[0]['id']);
+			$product->quantity = (int)$product->quantity - $item['qty'];
+			$product->quantity = $product->quantity < 0 ? 0 : $product->quantity;
+			$product->save();
+		}
+	}
+
+	public function afterOrderConfirmation()
+	{
+		$this->calculateQty($this->items);
+
+		Cart::destroyItemsSession($_SESSION);
+
+		Yii::$app->session->setFlash('success', 'Na váš email sme vám odoslali potvrdenie objednávky.');
+	}
+
+	public function checkItemsOverQuantity($items)
+	{
+		$items = static::orderedItems($items);
+
+		$corrected_items   = [];
+		$needed_correction = [];
+		foreach ($items as $item) {
+			$product_qty = Product::findOne($item[0]['id']);
+			if ($item['qty'] > $product_qty->quantity) {
+				$needed_correction[] = $item[0]['id'];
+				$item['qty']         = $product_qty->quantity;
+			}
+
+			 $corrected_items[$item[0]['id']] = $item['qty'];
+		}
+
+		if (!empty($needed_correction)) {
+			return json_encode($corrected_items);
+		}
+	}
+
+	public function orderItemsQty($items)
+	{
+		$items = static::orderedItems($items);
+
+		$qty = 0;
+		foreach ($items as $item){
+			$qty = $qty + $item['qty'];
+		}
+
+		return $qty;
 	}
 }

@@ -65,7 +65,7 @@ class CartController extends Controller
 
 	public function actionIndex($id = null)
 	{
-		if (Yii::$app->session->get('item_' . $id) == 0) {
+		if (Yii::$app->session->get('item_' . $id) == 0 && Product::findOne($id)->quantity > 0) {
 			Yii::$app->session->set('item_' . $id, '1');
 		}
 
@@ -81,7 +81,7 @@ class CartController extends Controller
 	{
 		$item_session = Yii::$app->session->get('item_' . $id);
 		if ($item_session !== null) {
-			$new_value = $item_session + 1;
+			$new_value = ($item_session == Product::findOne($id)->quantity) ?: $item_session + 1;
 			Yii::$app->session->set('item_' . $id, $new_value);
 		}
 
@@ -96,8 +96,8 @@ class CartController extends Controller
 			Yii::$app->session->set('item_' . $id, $new_value);
 		}
 
-		if ($item_session === 0){
-			Yii::$app->session->remove('item_'.$id);
+		if ($item_session === 0) {
+			Yii::$app->session->remove('item_' . $id);
 		}
 
 		return $this->redirect(['//cart/index']);
@@ -115,18 +115,22 @@ class CartController extends Controller
 
 	public function actionAjaxIncreaseItem()
 	{
-		if (Yii::$app->request->isAjax) {
+		$item_amount = (int)Yii::$app->request->post('itemAmount');
+
+		if (Yii::$app->request->isAjax)
+		{
 			$id     = Yii::$app->request->post('id');
-			$amount = (int)Yii::$app->request->post('itemAmount') + 1;
+			$amount = ($item_amount == Product::findOne($id)->quantity) ? Product::findOne($id)->quantity : ($item_amount + 1);
 			Yii::$app->session->set('item_' . $id, $amount);
 			return $amount;
 		}
+
 		return false;
 	}
 
 	public function actionAjaxDecreaseItem()
 	{
-		$id = Yii::$app->request->post('id');
+		$id           = Yii::$app->request->post('id');
 		$item_session = Yii::$app->session->get('item_' . $id);
 
 		if (Yii::$app->request->isAjax && $item_session > 0) {
@@ -135,8 +139,8 @@ class CartController extends Controller
 			return $amount;
 		}
 
-		if ($item_session == 0){
-			return Yii::$app->session->remove('item_'.$id);
+		if ($item_session == 0) {
+			return Yii::$app->session->remove('item_' . $id);
 		}
 
 		return 0;

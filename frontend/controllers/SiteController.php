@@ -75,14 +75,14 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('//site/index', [
-        	'products' => Product::find()->select('id, name, price, category, introduction')->asArray()->limit(4)->all(),
+        	'products' => Product::find()->select('id, name, price, quantity, category, introduction')->asArray()->limit(4)->all(),
 		]);
     }
 
 	public function actionShop()
 	{
 		return $this->render('//site/shop', [
-			'products' => Product::find()->select('id, name, price, category, introduction')->asArray()->all(),
+			'products' => Product::find()->select('id, name, price, quantity,category, introduction')->asArray()->all(),
 			'categories' => Category::find()->select('name')->asArray()->all(),
 		]);
     }

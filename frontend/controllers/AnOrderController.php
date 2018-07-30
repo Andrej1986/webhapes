@@ -34,20 +34,33 @@ class AnOrderController extends \yii\web\Controller
 		]);
 	}
 
+
 	public function actionOrderConfirmation($order_id)
 	{
 		$model = AnOrder::findOne($order_id);
+//		var_dump($model->checkOverQuantityItems($model->items));exit();
+
+		if ($model->checkItemsOverQuantity($model->items) != '') {
+			$model->items = $model->checkItemsOverQuantity($model->items);
+			$model->save();
+			Yii::$app->session->setFlash('error', 'Je nám ľúto, ale niektoré produkty sa medzičasom vypredali, alebo nie sú vo vami požadovanej kvantite. Prosím skontrolujte si objednávku, či spĺňa vaše požiadavky po korekcii. Ak nie, skúste ísť do obchodu a nájsť produkty, ktoré nie sú vypredané.');
+
+			return $this->redirect(['//an-order/data-check', 'order_id' => $order_id]);
+		}
+
+		if($model->orderItemsQty($model->items) == 0){return $this->redirect(['//site']);}
 
 		if ($model->load(\Yii::$app->request->post()) && $model->save()) {
 
 			if ($model->sendOrderConfirmationEmail($model->email)) {
-				Cart::destroyItemsSession($_SESSION);
-				Yii::$app->session->setFlash('success', 'Na váš email sme vám odoslali potvrdenie objednávky.');
+
+				$model->afterOrderConfirmation();
+
 				return $this->render('//an-order/order_confirmation');
 			}
 
-			Cart::destroyItemsSession($_SESSION);
-			Yii::$app->session->setFlash('success', 'Nepodarilo sa odoslať potvrdenie objednávky na váš email.');
+			$model->afterOrderConfirmation();
+
 			return $this->render('//an-order/order_confirmation');
 		}
 

@@ -309,4 +309,9 @@ nav.navbar {
     background-color: #242424;
     border-color: #4cceff; }
 
+.btn-sold-out {
+  color: black;
+  background-color: #fbab18;
+  border-color: #fbab18; }
+
 /*# sourceMappingURL=style.css.map */

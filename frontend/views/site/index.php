@@ -48,11 +48,18 @@ $this->title = 'Tvorba web stránok - WebHAPES';
     <div class="row container-fluid">
 		<?php foreach ($products as $product): ?>
             <div class="col-md-offset-2 col-md-3  product">
-                <a href="<?= Url::to(['//product/index', 'id' => $product['id']]) ?>"><h4><?= $product['name'] ?></h4></a>
+                <a href="<?= Url::to(['//product/index', 'id' => $product['id']]) ?>"><h4><?= $product['name'] ?></h4>
+                </a>
                 <pre><?= $product['introduction'] ?></pre>
                 <p>Cena: <?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
-                <a href="<?= Url::to(['//cart/index', 'id' => $product['id']]) ?>"
-                   class="btn btn-confirm">Objednať</a>
+				<?php if ($product['quantity'] > 0): ?>
+                    <a href="<?= Url::to(['//cart/index', 'id' => $product['id']]) ?>"
+                       class="btn btn-confirm">Objednať</a>
+				<?php endif; ?>
+                <?php if ($product['quantity'] <= 0): ?>
+                    <a
+                       class="btn btn-sold-out">Dočasne vypredané</a>
+				<?php endif; ?>
             </div>
 		<?php endforeach; ?>
     </div>
