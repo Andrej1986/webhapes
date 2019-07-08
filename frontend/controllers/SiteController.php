@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\Category;
+use frontend\models\Product;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -72,7 +74,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('//site/index', [
+        	'products' => Product::find()->select('name, price, category, introduction')->asArray()->limit(4)->all(),
+		]);
+    }
+
+	public function actionShop()
+	{
+		return $this->render('//site/shop', [
+			'products' => Product::find()->select('id, name, price, category, introduction')->asArray()->all(),
+			'categories' => Category::find()->select('name')->asArray()->all(),
+		]);
     }
 
     /**
@@ -120,9 +132,9 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success', 'Ďakujeme, že ste nás kontaktovali. Ozveme sa vám tak rýchlo, ako to pôjde.');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                Yii::$app->session->setFlash('error', 'Žiaľ, správu sa nepodarilo odoslať.');
             }
 
             return $this->refresh();

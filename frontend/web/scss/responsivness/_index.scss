@@ -1,0 +1,92 @@
+@media only screen and (min-width: 320px) {
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .site-index {
+    .product {
+      min-height: 150px;
+    }
+  }
+
+  .carousel-caption {
+    margin-bottom: 25%;
+  }
+  .carousel-control {
+    font-size: 2.0em;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .site-index {
+    .product {
+      min-height: 290px;
+    }
+
+    .carousel-caption {
+      margin-bottom: 35%;
+      h4 {
+        font-size: 1.6em;
+      }
+      p {
+        font-size: 1.2em;
+      }
+    }
+    .carousel-control {
+      font-size: 3.0em;
+      top: 20%;
+    }
+    .row.the-carousel {
+      margin-top: -10% !important;
+    }
+    .carousel-indicators{
+      margin-bottom: 30%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .site-index {
+    .product {
+      min-height: 170px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .site-index {
+    .product {
+      min-height: 250px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .site-index {
+    .product {
+      min-height: 170px;
+    }
+    .carousel-control {
+      font-size: 3.0em;
+      top: 30%;
+    }
+
+    .row.the-carousel {
+      margin-top: -15% !important;
+    }
+  }
+}
+
+@media only screen and (min-width: 2600px) {
+  .site-index {
+    .product {
+      min-height: 250px;
+      pre {
+        padding-bottom: 0 !important;
+      }
+    }
+  }
+}
+

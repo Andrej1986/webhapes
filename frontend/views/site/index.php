@@ -2,52 +2,56 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+use yii\bootstrap\Carousel;
+
+$this->title = 'Tvorba web stránok - WebHAPES';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <div class="row the-carousel">
+		<?php echo Carousel::widget([
+			'items' => [
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+				[
+					'content' => '<img style="width: 100%" src="images/4.jpg"/>',
+					'caption' => '
+<a href="index.php?r=site%2Fshop">
+ <h4>Do obchodu</h4><p>Vyberte si z našej ponuky</p>
+</a>
+',
+					'url'     => ['site/about']
+				],// equivalent to the above
+				[
+					'content' => '<img style="width: 100%" src="images/6.png"/>',
+					'caption' => '
+<a href="index.php?r=site%2Fcooperation">
+<h4>Ďalšie možnosti spolupráce</h4>
+</a>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+',
+				],
+
+				[
+					'content' => '<img style="width: 100%" src="images/phone2-1.jpg"/>',
+					'caption' => '
+<a href="index.php?r=site%2Fcontact">
+<h4>Kontaktujte nás</h4><p>V prípade otázok radi pomôžeme</p>
+</a>
+',
+//					'options' => [],
+				],
+			]
+		]);
+		?>
+    </div>
+    <div class="row container-fluid">
+		<?php foreach ($products as $product): ?>
+            <div class="col-md-offset-2 col-md-3  product">
+                <h4><?= $product['name'] ?></h4>
+                <pre><?= $product['introduction'] ?></pre>
+                <p>Cena: <?= $product['price'] ?>&euro;<?= ($product['category']) === 'na mieru' ? '/hodina' : '' ?></p>
+            </div>
+		<?php endforeach; ?>
     </div>
 
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
 </div>

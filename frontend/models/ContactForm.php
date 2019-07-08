@@ -38,7 +38,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'verifyCode' => 'Overovací kód',
+            'name' => 'Meno',
+            'email' => 'Email',
+            'subject' => 'Predmet',
+            'body' => 'Vaša správa',
         ];
     }
 
@@ -50,11 +54,16 @@ class ContactForm extends Model
      */
     public function sendEmail($email)
     {
+//    	var_dump($email);
+//    	echo '<br>';
+//    	var_dump($this->email);exit();
         return Yii::$app->mailer->compose()
             ->setTo($email)
             ->setFrom([$this->email => $this->name])
             ->setSubject($this->subject)
-            ->setTextBody($this->body)
+            ->setTextBody('email odosielateľa: ' . $this->email . ' 
+            
+            ' . $this->body)
             ->send();
     }
 }
